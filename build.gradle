@@ -27,13 +27,13 @@ dependencies {
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
 
 	modImplementation 'RebornCore:RebornCore-1.15:+'
-	include "RebornCore:RebornCore-1.15:+"
+	//include "RebornCore:RebornCore-1.15:+"
 
 	modImplementation 'TechReborn:TechReborn-1.15:+'
-	include 'TechReborn:TechReborn-1.15:+'
+	//include 'TechReborn:TechReborn-1.15:+'
 
 	modImplementation "alexiil.mc.mod:simplepipes-all:+"
-	include "alexiil.mc.mod:simplepipes-all:+"
+	//include "alexiil.mc.mod:simplepipes-all:+"
 }
 
 processResources {
