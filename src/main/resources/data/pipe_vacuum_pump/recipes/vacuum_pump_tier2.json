@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "   ",
+    "BBB",
+    "CMC"
+  ],
+  "key": {
+    "B": {
+      "item": "techreborn:bronze_plate"
+    },
+    "C": {
+      "item": "techreborn:advanced_circuit"
+    },
+    "M": {
+      "item": "pipe_vacuum_pump:vacuum_pump_block_tier1"
+    }
+  },
+  "result": {
+    "item": "pipe_vacuum_pump:vacuum_pump_block_tier2",
+    "count": 1
+  }
+}
+

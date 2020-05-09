@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "   ",
+    "IPI",
+    "CBC"
+  ],
+  "key": {
+    "I": {
+      "item": "techreborn:iron_plate"
+    },
+    "C": {
+      "item": "techreborn:electronic_circuit"
+    },
+    "P": {
+      "item": "minecraft:piston"
+    },
+    "B": {
+      "item": "techreborn:basic_machine_frame"
+    }
+  },
+  "result": {
+    "item": "pipe_vacuum_pump:vacuum_pump_block_tier1",
+    "count": 1
+  }
+}
+

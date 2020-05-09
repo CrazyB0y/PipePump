@@ -1,0 +1,36 @@
+{
+    "schemaVersion": 1,
+    "id": "pipe_vacuum_pump",
+    "version": "${version}",
+    "name": "PipePump",
+    "description": "Engines for SimplePipes powered by TechReborn energy system",
+    "authors": [
+        "Cr1zyB0y"
+    ],
+    "contributors": [],
+    "contact": {
+        "homepage": "https://www.curseforge.com/minecraft/mc-mods/pipepump",
+        "sources": "https://github.com/CrazyB0y/PipePump",
+        "issues": "https://github.com/CrazyB0y/PipePump/issues"
+    },
+    "license": "Copyrighted",
+    "icon": "assets/pipe_vacuum_pump/icon.png",
+    "environment": "*",
+    "entrypoints": {
+        "main": [
+            "ru.cr1zyb0y.pipevacuumpump.PipeVacuumPumpMod"
+        ],
+        "client": [],
+        "server": []
+    },
+    "mixins": [
+        "pipe_vacuum_pump.mixins.json"
+    ],
+    "depends": {
+        "fabricloader": ">=0.4.0",
+        "fabric": "*",
+        "reborncore": ">=4.2.8",
+        "techreborn": ">=3.3.10",
+        "simple_pipes": ">=0.3.5"
+    }
+}

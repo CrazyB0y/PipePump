@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "   ",
+    "SSS",
+    "CMC"
+  ],
+  "key": {
+    "S": {
+      "item": "techreborn:steel_plate"
+    },
+    "C": {
+      "item": "techreborn:industrial_circuit"
+    },
+    "M": {
+      "item": "pipe_vacuum_pump:vacuum_pump_block_tier2"
+    }
+  },
+  "result": {
+    "item": "pipe_vacuum_pump:vacuum_pump_block_tier3",
+    "count": 1
+  }
+}
+

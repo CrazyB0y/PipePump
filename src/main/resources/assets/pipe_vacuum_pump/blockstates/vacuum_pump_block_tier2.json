@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "facing=east,active=false": { "model": "pipe_vacuum_pump:block/vacuum_pump_tier2_off", "x": 90, "y": 90 },
+    "facing=west,active=false": { "model": "pipe_vacuum_pump:block/vacuum_pump_tier2_off", "x": 90, "y": 270 },
+    "facing=north,active=false": { "model": "pipe_vacuum_pump:block/vacuum_pump_tier2_off", "x": 90 },
+    "facing=south,active=false": { "model": "pipe_vacuum_pump:block/vacuum_pump_tier2_off", "x": 90, "y": 180 },
+
+    "facing=east,active=true": { "model": "pipe_vacuum_pump:block/vacuum_pump_tier2_on", "x": 90, "y": 90 },
+    "facing=west,active=true": { "model": "pipe_vacuum_pump:block/vacuum_pump_tier2_on", "x": 90, "y": 270 },
+    "facing=north,active=true": { "model": "pipe_vacuum_pump:block/vacuum_pump_tier2_on", "x": 90 },
+    "facing=south,active=true": { "model": "pipe_vacuum_pump:block/vacuum_pump_tier2_on", "x": 90, "y": 180 }
+  }
+}

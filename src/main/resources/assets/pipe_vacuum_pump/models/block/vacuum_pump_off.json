@@ -1,0 +1,6 @@
+{
+  "parent": "pipe_vacuum_pump:block/vacuum_pump",
+  "textures": {
+    "target": "pipe_vacuum_pump:block/pump_top_off"
+  }
+}
