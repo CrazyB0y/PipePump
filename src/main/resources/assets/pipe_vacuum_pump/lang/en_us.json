@@ -1,0 +1,13 @@
+{
+  "itemGroup.pipe_vacuum_pump.main": "PipePump",
+  "block.pipe_vacuum_pump.vacuum_pump_block_tier1": "Pipe Pump",
+  "item.pipe_vacuum_pump.vacuum_pump_block_tier1": "Pipe Pump",
+  "block.pipe_vacuum_pump.vacuum_pump_block_tier2": "Advanced Pipe Pump",
+  "item.pipe_vacuum_pump.vacuum_pump_block_tier2": "Advanced Pipe Pump",
+  "block.pipe_vacuum_pump.vacuum_pump_block_tier3": "Industrial Pipe Pump",
+  "item.pipe_vacuum_pump.vacuum_pump_block_tier3": "Industrial Pipe Pump",
+  "pipe_vacuum_pump.tooltip.vacuum_pump_block": "Powering wood pipes that pop items from containers",
+  "pipe_vacuum_pump.tooltip.speed": "Speed:%s %s item / %s ticks",
+  "pipe_vacuum_pump.tooltip.consumption": "Consumption:%s %s EU / tick",
+  "pipe_vacuum_pump.tooltip.hold_shift": "Hold shift for info"
+}

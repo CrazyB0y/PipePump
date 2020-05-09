@@ -29,12 +29,11 @@ dependencies {
 	modImplementation 'RebornCore:RebornCore-1.15:+'
 	include "RebornCore:RebornCore-1.15:+"
 
-	//this is pipe mod, its must be here
+	modImplementation 'TechReborn:TechReborn-1.15:+'
+	include 'TechReborn:TechReborn-1.15:+'
+
 	modImplementation "alexiil.mc.mod:simplepipes-all:+"
 	include "alexiil.mc.mod:simplepipes-all:+"
-
-	//for testing only. but how play without? :)
-	modRuntime 'TechReborn:TechReborn-1.15:+'
 }
 
 processResources {
