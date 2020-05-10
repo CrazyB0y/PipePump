@@ -4,6 +4,8 @@ Engines for SimplePipes powered by TechReborn energy system
 
 Now you need to use Pipe Pump for using wood pipes, and that consume energy from TechReborn
 
+> This is my first experience in Java, so code maybe shitty
+
 ## Dependencies
 
 * Minecraft 1.15.2 _(Maybe its will work on 1.16 preview build, but I don't guarantee that)_
