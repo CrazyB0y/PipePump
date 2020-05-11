@@ -2,19 +2,27 @@ package ru.cr1zyb0y.pipevacuumpump.blocks;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+
+import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.item.TooltipContext;
+import net.minecraft.entity.EntityContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Formatting;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
+import net.minecraft.util.shape.VoxelShape;
+import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 
 import reborncore.api.blockentity.IMachineGuiHandler;
 import reborncore.common.blocks.BlockMachineBase;
 
 import ru.cr1zyb0y.pipevacuumpump.blocksentity.MachinePipePumpBlockEntity;
+import ru.cr1zyb0y.pipevacuumpump.utils.VoxelShapeHelper;
 
 import java.util.List;
 
@@ -22,11 +30,30 @@ public class MachinePipePumpBlock extends BlockMachineBase
 {
     private int _energyCost;
     private int _pumpSpeedTick;
+    private VoxelShape[] _blockShapes;
 
     public MachinePipePumpBlock(int energyCost, int pumpSpeedTick)
     {
         _energyCost = energyCost;
         _pumpSpeedTick = pumpSpeedTick;
+        _blockShapes = VoxelShapeHelper.getRotatedHorizontalShapes(Direction.NORTH, getBaseShape());
+    }
+
+    private VoxelShape getBaseShape()
+    {
+        return VoxelShapes.union
+        (
+            VoxelShapes.cuboid(0f, 0f, 0.624f, 1.0f, 1.0f, 1.0f),
+            VoxelShapes.cuboid(0.25f, 0.25f, 0.062f, 0.75f, 0.75f, 0.75f)
+        );
+    }
+
+    //Now is no gui, later we need add GUI with "vacuuming progress" and upgrades
+    @Override
+    public IMachineGuiHandler getGui()
+    {
+
+        return null;
     }
 
     //Get pump item speed
@@ -35,16 +62,23 @@ public class MachinePipePumpBlock extends BlockMachineBase
         return _pumpSpeedTick;
     }
 
-    //Now is no gui, later we need add GUI with "vacuuming progress" and upgrades
-    @Override
-    public IMachineGuiHandler getGui() { return null; }
-
     //Base cost per tick
     public int getEnergyCost() { return _energyCost; }
 
     //Create block entity
     @Override
-    public BlockEntity createBlockEntity(BlockView worldIn) { return new MachinePipePumpBlockEntity(); }
+    public BlockEntity createBlockEntity(BlockView worldIn)
+    {
+        return new MachinePipePumpBlockEntity();
+    }
+
+    //make block valid view
+    @SuppressWarnings("deprecation")
+    @Override
+    public VoxelShape getOutlineShape(BlockState state, BlockView view, BlockPos pos, EntityContext ctx)
+    {
+        return _blockShapes[state.get(FACING).getHorizontal()];
+    }
 
     //make tooltip for block
     @Environment(EnvType.CLIENT)

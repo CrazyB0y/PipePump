@@ -1,12 +1,39 @@
 {
-  "parent": "block/cube",
   "textures": {
-    "down": "pipe_vacuum_pump:block/pump_bottom",
-    "up": "#target",
-    "north": "#side",
-    "south": "#side",
-    "east": "#side",
-    "west": "#side",
-    "particle": "#side"
+    "particle": "#side",
+    "tier_texture": "#side",
+    "target": "#target",
+    "bottom": "pipe_vacuum_pump:block/pump_bottom",
+    "any_tier_texture": "pipe_vacuum_pump:block/pump_side_tier1",
+    "turned_off": "pipe_vacuum_pump:block/pump_top_main"
+  },
+  "display": {
+    "thirdperson_righthand": {
+      "rotation": [64, -20, -25],
+      "translation": [1.5, 1.5, 0],
+      "scale": [0.25, 0.25, 0.25]
+    },
+    "thirdperson_lefthand": {
+      "rotation": [64, -20, -25],
+      "translation": [1.5, 1.5, 0],
+      "scale": [0.25, 0.25, 0.25]
+    },
+    "firstperson_righthand": {
+      "scale": [0.6, 0.6, 0.6]
+    },
+    "firstperson_lefthand": {
+      "scale": [0.6, 0.6, 0.6]
+    },
+    "ground": {
+      "scale": [0.4, 0.4, 0.4]
+    },
+    "gui": {
+      "rotation": [120, 0, 45],
+      "scale": [0.6, 0.6, 0.6]
+    },
+    "head": {
+      "rotation": [-90, 0, 0],
+      "translation": [0, 4.25, 0]
+    }
   }
 }

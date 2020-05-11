@@ -2,5 +2,47 @@
   "parent": "pipe_vacuum_pump:block/vacuum_pump",
   "textures": {
     "target": "pipe_vacuum_pump:block/pump_top_on"
-  }
+  },
+  "elements": [
+    {
+      "name": "pump_base",
+      "from": [0, 0, 10],
+      "to": [16, 16, 16],
+      "rotation": {"angle": 0, "axis": "y", "origin": [23, 8, 18]},
+      "faces": {
+        "north": {"uv": [0, 0, 16, 16], "texture": "#turned_off"},
+        "east": {"uv": [0, 10, 16, 16], "rotation": 90, "texture": "#any_tier_texture", "cullface": "east"},
+        "south": {"uv": [0, 0, 16, 16], "texture": "#bottom", "cullface": "south"},
+        "west": {"uv": [0, 10, 16, 16], "rotation": 270, "texture": "#any_tier_texture", "cullface": "west"},
+        "up": {"uv": [0, 10, 16, 16], "texture": "#any_tier_texture", "cullface": "up"},
+        "down": {"uv": [0, 10, 16, 16], "rotation": 180, "texture": "#any_tier_texture", "cullface": "down"}
+      }
+    },
+    {
+      "name": "pump_nose",
+      "from": [4, 4, 1],
+      "to": [12, 12, 10],
+      "rotation": {"angle": 0, "axis": "y", "origin": [8, 8, 5.5]},
+      "faces": {
+        "north": {"uv": [4, 4, 12, 12], "texture": "#target"},
+        "east": {"uv": [12, 0, 3, 8], "rotation": 90, "texture": "#tier_texture"},
+        "west": {"uv": [12, 0, 3, 8], "rotation": 270, "texture": "#tier_texture"},
+        "up": {"uv": [4, 0, 12, 8], "texture": "#tier_texture"},
+        "down": {"uv": [4, 0, 12, 8], "rotation": 180, "texture": "#tier_texture"}
+      }
+    },
+    {
+      "name": "pump_connector",
+      "from": [6, 6, -4],
+      "to": [10, 10, 1],
+      "rotation": {"angle": 0, "axis": "y", "origin": [27, 8, 0]},
+      "faces": {
+        "north": {"uv": [6, 6, 10, 10], "texture": "#target", "cullface": "north"},
+        "east": {"uv": [5, 6, 10, 10], "texture": "#target"},
+        "west": {"uv": [6, 6, 11, 10], "texture": "#target"},
+        "up": {"uv": [6, 6, 10, 11], "texture": "#target"},
+        "down": {"uv": [6, 5, 10, 10], "texture": "#target"}
+      }
+    }
+  ]
 }

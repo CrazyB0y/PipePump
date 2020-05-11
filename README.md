@@ -22,6 +22,8 @@ Now you need to use Pipe Pump for using wood pipes, and that consume energy from
 
 ![Consume even if chest empty](/docs/usage3.png)
 
+![Use triggers, bro](/docs/usage4.png)
+
 ## Crafting Recipes
   
 **Pipe Pump - Tier 1**
@@ -44,3 +46,10 @@ Now you need to use Pipe Pump for using wood pipes, and that consume energy from
 * Energy cost - **4** per tick
 
 ![Pipe Pump - Tier 3](/docs/tier_3.png)
+
+## Plans
+
+- Add engine model
+- Add electric fluid pump
+- Add pipe pump animations like in BuildCraft
+- Maybe some other advanced automation tools
