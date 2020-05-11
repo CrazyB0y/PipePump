@@ -1,8 +1,12 @@
 package ru.cr1zyb0y.pipevacuumpump;
 
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
+import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.minecraft.block.Block;
 import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.client.render.RenderLayer;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
@@ -48,6 +52,15 @@ public class RegistryManager
         PIPE_PUMP_BLOCK_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, getName("vacuum_pump"),
                 BlockEntityType.Builder.create(MachinePipePumpBlockEntity::new,
                         PIPE_PUMP_BLOCK_TIER1, PIPE_PUMP_BLOCK_TIER2, PIPE_PUMP_BLOCK_TIER3).build(null));
+    }
+
+    //Init client side effects
+    @SuppressWarnings("MethodCallSideOnly")
+    public static void ClientInit()
+    {
+        BlockRenderLayerMap.INSTANCE.putBlock(PIPE_PUMP_BLOCK_TIER1, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(PIPE_PUMP_BLOCK_TIER2, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(PIPE_PUMP_BLOCK_TIER3, RenderLayer.getCutout());
     }
 
     //Dumb way to register block with item

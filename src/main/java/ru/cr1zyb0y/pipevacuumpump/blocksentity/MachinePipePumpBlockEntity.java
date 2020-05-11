@@ -11,6 +11,8 @@ import ru.cr1zyb0y.pipevacuumpump.blocks.MachinePipePumpBlock;
 
 public class MachinePipePumpBlockEntity extends PowerAcceptorBlockEntity
 {
+    private int _energyCost = 1;
+
     public MachinePipePumpBlockEntity()
     {
         super(RegistryManager.PIPE_PUMP_BLOCK_ENTITY);
@@ -27,7 +29,7 @@ public class MachinePipePumpBlockEntity extends PowerAcceptorBlockEntity
             return;
         }
 
-        BlockState state = world.getBlockState(pos);
+        BlockState state = world.getBlockState(getPos());
         Block block = state.getBlock();
 
         if (block instanceof MachinePipePumpBlock)
@@ -47,7 +49,8 @@ public class MachinePipePumpBlockEntity extends PowerAcceptorBlockEntity
             }
 
             //Consume energy
-            double energyCost = getEuPerTick(vacuumPump.getEnergyCost());
+            _energyCost = vacuumPump.getEnergyCost();
+            double energyCost = getEuPerTick(_energyCost);
             if (getEnergy() > energyCost)
             {
                 useEnergy(getEuPerTick(energyCost));
@@ -66,11 +69,11 @@ public class MachinePipePumpBlockEntity extends PowerAcceptorBlockEntity
 
     //this is capacity
     @Override
-    public double getBaseMaxPower() { return 33; }
+    public double getBaseMaxPower() { return getBaseMaxInput() * 8; } //256 512 1024
 
     //return max input
     @Override
-    public double getBaseMaxInput() { return 32; }
+    public double getBaseMaxInput() { return _energyCost * 16 * 2; } // 32 64 128
 
     //we are won't generating energy
     @Override
