@@ -1,6 +1,5 @@
 package ru.cr1zyb0y.pipevacuumpump.mixin;
 
-import net.minecraft.block.BlockState;
 import ru.cr1zyb0y.pipevacuumpump.common.TilePipeEngineConnector;
 
 import alexiil.mc.mod.pipes.blocks.*;
@@ -42,9 +41,9 @@ public abstract class TilePipeWoodMixin extends TilePipeSided
 
     //load from tag
     @Override
-    public void fromTag(BlockState state, CompoundTag tag)
+    public void fromTag(CompoundTag tag)
     {
-        super.fromTag(state, tag);
+        super.fromTag(tag);
         EngineConnector.loadFromTag(tag);
     }
 
