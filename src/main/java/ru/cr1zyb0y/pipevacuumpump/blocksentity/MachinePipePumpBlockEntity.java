@@ -8,6 +8,7 @@ import reborncore.common.powerSystem.PowerAcceptorBlockEntity;
 
 import ru.cr1zyb0y.pipevacuumpump.RegistryManager;
 import ru.cr1zyb0y.pipevacuumpump.blocks.MachinePipePumpBlock;
+import team.reborn.energy.EnergySide;
 
 public class MachinePipePumpBlockEntity extends PowerAcceptorBlockEntity
 {
@@ -81,5 +82,5 @@ public class MachinePipePumpBlockEntity extends PowerAcceptorBlockEntity
 
     //we are won't generating energy
     @Override
-    public boolean canProvideEnergy(final Direction direction) { return false; }
+    public boolean canProvideEnergy(final EnergySide side) { return false; }
 }
