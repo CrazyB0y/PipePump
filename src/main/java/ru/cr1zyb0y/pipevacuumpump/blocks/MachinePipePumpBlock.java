@@ -92,8 +92,9 @@ public class MachinePipePumpBlock extends BlockMachineBase
     //make tooltip for block
     @Environment(EnvType.CLIENT)
     @Override
-    public void buildTooltip(ItemStack stack, BlockView worldIn, List<Text> tooltip, TooltipContext flagIn)
+    public void appendTooltip(ItemStack stack, BlockView worldIn, List<Text> tooltip, TooltipContext flagIn)
     {
+        super.appendTooltip(stack, worldIn, tooltip, flagIn);
         if(Screen.hasShiftDown())
         {
             tooltip.add(new TranslatableText("pipe_vacuum_pump.tooltip.vacuum_pump_block").formatted(Formatting.GOLD));

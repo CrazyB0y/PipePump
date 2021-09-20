@@ -1,6 +1,7 @@
 package ru.cr1zyb0y.pipevacuumpump.mixin;
 
 import net.minecraft.block.BlockState;
+import net.minecraft.nbt.NbtCompound;
 import ru.cr1zyb0y.pipevacuumpump.common.TilePipeEngineConnector;
 
 import alexiil.mc.mod.pipes.blocks.*;
@@ -9,7 +10,6 @@ import org.spongepowered.asm.mixin.Mixin;
 
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.util.math.Direction;
-import net.minecraft.nbt.CompoundTag;
 
 import java.util.function.Function;
 
@@ -33,16 +33,16 @@ public abstract class TilePipeWoodMixin extends TilePipeSided
 
     //save to tag
     @Override
-    public CompoundTag toTag(CompoundTag tag)
+    public NbtCompound writeNbt(NbtCompound tag)
     {
-        tag = super.toTag(tag);
+        tag = super.writeNbt(tag);
         EngineConnector.saveToTag(tag);
         return tag;
     }
 
     //load from tag
     @Override
-    public void fromTag(BlockState state, CompoundTag tag)
+    public void fromTag(BlockState state, NbtCompound tag)
     {
         super.fromTag(state, tag);
         EngineConnector.loadFromTag(tag);
@@ -71,11 +71,11 @@ public abstract class TilePipeWoodMixin extends TilePipeSided
         //now need check all things
         if(EngineConnector.isCanExtract(world))
         {
-            tryExtract(dir);
+            tryExtract(dir, 1);
             return;
         }
     }
 
     //extract method, overridden in derived class
-    protected abstract void tryExtract(Direction dir);
+    protected abstract void tryExtract(Direction dir, int pulses);
 }

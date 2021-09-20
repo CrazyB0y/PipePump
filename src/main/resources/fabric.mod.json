@@ -29,10 +29,9 @@
         "pipe_vacuum_pump.mixins.json"
     ],
     "depends": {
-        "fabricloader": ">=0.8.9",
+        "fabricloader": "*",
         "fabric": "*",
-        "reborncore": ">=4.2.8",
-        "techreborn": ">=3.3.10",
-        "simple_pipes": ">=0.3.5"
+        "reborncore": "*",
+        "simple_pipes": "*"
     }
 }
