@@ -1,5 +1,5 @@
 plugins {
-	id 'fabric-loom' version '0.4-SNAPSHOT'
+	id 'fabric-loom' version '0.7-SNAPSHOT'
 	id 'maven-publish'
 }
 
@@ -24,7 +24,7 @@ dependencies {
 	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
 
 	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
-	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
+	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
 	modImplementation 'RebornCore:RebornCore-1.16:+'
 	//include "RebornCore:RebornCore-1.15:+"
@@ -32,7 +32,7 @@ dependencies {
 	modImplementation 'TechReborn:TechReborn-1.16:+'
 	//include 'TechReborn:TechReborn-1.15:+'
 
-	modImplementation "alexiil.mc.mod:simplepipes-all:+"
+	modImplementation "alexiil.mc.mod:simplepipes-all:0.5.0"
 	//include "alexiil.mc.mod:simplepipes-all:+"
 }
 

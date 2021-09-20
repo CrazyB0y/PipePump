@@ -2,7 +2,7 @@ package ru.cr1zyb0y.pipevacuumpump.common;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
@@ -84,7 +84,7 @@ public class TilePipeEngineConnector
     }
 
     //save connector data to tag
-    public void saveToTag(CompoundTag tag)
+    public void saveToTag(NbtCompound tag)
     {
         if(_pipeEnginePos != null)
         {
@@ -98,7 +98,7 @@ public class TilePipeEngineConnector
     }
 
     //load connector data from tag
-    public void loadFromTag(CompoundTag tag)
+    public void loadFromTag(NbtCompound tag)
     {
         int[] blockPosArr = tag.getIntArray("engineConnector");
         if(blockPosArr != null && blockPosArr.length == 3)
