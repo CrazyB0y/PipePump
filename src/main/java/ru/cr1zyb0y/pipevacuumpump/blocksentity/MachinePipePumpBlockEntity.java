@@ -2,8 +2,11 @@ package ru.cr1zyb0y.pipevacuumpump.blocksentity;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 
+import net.minecraft.world.World;
+import reborncore.common.blockentity.MachineBaseBlockEntity;
 import reborncore.common.powerSystem.PowerAcceptorBlockEntity;
 
 import ru.cr1zyb0y.pipevacuumpump.RegistryManager;
@@ -13,23 +16,23 @@ public class MachinePipePumpBlockEntity extends PowerAcceptorBlockEntity
 {
     private int _energyCost = 1;
 
-    public MachinePipePumpBlockEntity()
+    public MachinePipePumpBlockEntity(BlockPos pos, BlockState state)
     {
-        super(RegistryManager.PIPE_PUMP_BLOCK_ENTITY);
+        super(RegistryManager.PIPE_PUMP_BLOCK_ENTITY, pos, state);
     }
 
     //Consuming energy
     @Override
-    public void tick()
+    public void tick(World world, BlockPos pos, BlockState state, MachineBaseBlockEntity blockEntity)
     {
-        super.tick();
+        super.tick(world, pos, state, blockEntity);
 
         if (world == null || world.isClient)
         {
             return;
         }
 
-        BlockState state = world.getBlockState(getPos());
+        //BlockState state = world.getBlockState(getPos());
         Block block = state.getBlock();
 
         if (block instanceof MachinePipePumpBlock)
@@ -50,7 +53,7 @@ public class MachinePipePumpBlockEntity extends PowerAcceptorBlockEntity
 
             //Consume energy
             _energyCost = vacuumPump.getEnergyCost();
-            double energyCost = getEuPerTick(_energyCost);
+            long energyCost = getEuPerTick(_energyCost);
             if (getEnergy() > energyCost)
             {
                 useEnergy(getEuPerTick(energyCost));
@@ -69,15 +72,15 @@ public class MachinePipePumpBlockEntity extends PowerAcceptorBlockEntity
 
     //this is capacity
     @Override
-    public double getBaseMaxPower() { return getBaseMaxInput() * 8; } //256 512 1024
+    public long getBaseMaxPower() { return getBaseMaxInput() * 8; } //256 512 1024
 
     //return max input
     @Override
-    public double getBaseMaxInput() { return _energyCost * 16 * 2; } // 32 64 128
+    public long getBaseMaxInput() { return _energyCost * 16 * 2; } // 32 64 128
 
     //we are won't generating energy
     @Override
-    public double getBaseMaxOutput() { return 0; }
+    public long getBaseMaxOutput() { return 0; }
 
     //we are won't generating energy
     @Override

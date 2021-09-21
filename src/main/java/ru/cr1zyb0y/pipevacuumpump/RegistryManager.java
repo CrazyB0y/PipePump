@@ -4,6 +4,7 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
+import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.block.Block;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.client.render.RenderLayer;
@@ -50,7 +51,7 @@ public class RegistryManager
 
         //Reg entity
         PIPE_PUMP_BLOCK_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, getName("vacuum_pump"),
-                BlockEntityType.Builder.create(MachinePipePumpBlockEntity::new,
+                FabricBlockEntityTypeBuilder.create(MachinePipePumpBlockEntity::new,
                         PIPE_PUMP_BLOCK_TIER1, PIPE_PUMP_BLOCK_TIER2, PIPE_PUMP_BLOCK_TIER3).build(null));
     }
 

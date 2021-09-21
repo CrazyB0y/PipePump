@@ -4,10 +4,10 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 
 import net.minecraft.block.BlockState;
+import net.minecraft.block.ShapeContext;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.item.TooltipContext;
-import net.minecraft.entity.EntityContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
@@ -84,7 +84,7 @@ public class MachinePipePumpBlock extends BlockMachineBase
     //make block valid view
     @SuppressWarnings("deprecation")
     @Override
-    public VoxelShape getOutlineShape(BlockState state, BlockView view, BlockPos pos, EntityContext ctx)
+    public VoxelShape getOutlineShape(BlockState state, BlockView view, BlockPos pos, ShapeContext ctx)
     {
         return _blockShapes[state.get(FACING).getHorizontal()];
     }
@@ -92,8 +92,9 @@ public class MachinePipePumpBlock extends BlockMachineBase
     //make tooltip for block
     @Environment(EnvType.CLIENT)
     @Override
-    public void buildTooltip(ItemStack stack, BlockView worldIn, List<Text> tooltip, TooltipContext flagIn)
+    public void appendTooltip(ItemStack stack, BlockView worldIn, List<Text> tooltip, TooltipContext flagIn)
     {
+        super.appendTooltip(stack, worldIn, tooltip, flagIn);
         if(Screen.hasShiftDown())
         {
             tooltip.add(new TranslatableText("pipe_vacuum_pump.tooltip.vacuum_pump_block").formatted(Formatting.GOLD));
