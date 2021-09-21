@@ -76,9 +76,9 @@ public class MachinePipePumpBlock extends BlockMachineBase
 
     //Create block entity
     @Override
-    public BlockEntity createBlockEntity(BlockView worldIn)
+    public BlockEntity createBlockEntity(BlockPos pos, BlockState state)
     {
-        return new MachinePipePumpBlockEntity();
+        return new MachinePipePumpBlockEntity(pos, state);
     }
 
     //make block valid view

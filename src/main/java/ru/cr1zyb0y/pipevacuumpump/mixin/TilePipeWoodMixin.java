@@ -1,7 +1,9 @@
 package ru.cr1zyb0y.pipevacuumpump.mixin;
 
+import alexiil.mc.mod.pipes.pipe.PipeSpFlow;
 import net.minecraft.block.BlockState;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.util.math.BlockPos;
 import ru.cr1zyb0y.pipevacuumpump.common.TilePipeEngineConnector;
 
 import alexiil.mc.mod.pipes.blocks.*;
@@ -20,8 +22,8 @@ public abstract class TilePipeWoodMixin extends TilePipeSided
     TilePipeEngineConnector EngineConnector = new TilePipeEngineConnector();
 
     //ctor
-    public TilePipeWoodMixin(BlockEntityType<?> type, BlockPipe pipeBlock, Function<TilePipe, PipeFlow> flowConstructor)
-    { super(type, pipeBlock, flowConstructor); }
+    public TilePipeWoodMixin(BlockEntityType<?> type, BlockPos pos, BlockState state, BlockPipe pipeBlock, Function<TilePipe, PipeSpFlow> flowConstructor)
+    { super(type, pos, state, pipeBlock, flowConstructor); }
 
     //logic for connection to engine
     @Override
@@ -42,9 +44,9 @@ public abstract class TilePipeWoodMixin extends TilePipeSided
 
     //load from tag
     @Override
-    public void fromTag(BlockState state, NbtCompound tag)
+    public void readNbt(NbtCompound tag)
     {
-        super.fromTag(state, tag);
+        super.readNbt(tag);
         EngineConnector.loadFromTag(tag);
     }
 
