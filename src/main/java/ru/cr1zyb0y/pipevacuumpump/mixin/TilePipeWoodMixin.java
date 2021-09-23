@@ -1,6 +1,9 @@
 package ru.cr1zyb0y.pipevacuumpump.mixin;
 
+import alexiil.mc.mod.pipes.pipe.PipeSpFlow;
 import net.minecraft.block.BlockState;
+import net.minecraft.nbt.NbtCompound;
+import net.minecraft.util.math.BlockPos;
 import ru.cr1zyb0y.pipevacuumpump.common.TilePipeEngineConnector;
 
 import alexiil.mc.mod.pipes.blocks.*;
@@ -9,7 +12,6 @@ import org.spongepowered.asm.mixin.Mixin;
 
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.util.math.Direction;
-import net.minecraft.nbt.CompoundTag;
 
 import java.util.function.Function;
 
@@ -20,8 +22,8 @@ public abstract class TilePipeWoodMixin extends TilePipeSided
     TilePipeEngineConnector EngineConnector = new TilePipeEngineConnector();
 
     //ctor
-    public TilePipeWoodMixin(BlockEntityType<?> type, BlockPipe pipeBlock, Function<TilePipe, PipeFlow> flowConstructor)
-    { super(type, pipeBlock, flowConstructor); }
+    public TilePipeWoodMixin(BlockEntityType<?> type, BlockPos pos, BlockState state, BlockPipe pipeBlock, Function<TilePipe, PipeSpFlow> flowConstructor)
+    { super(type, pos, state, pipeBlock, flowConstructor); }
 
     //logic for connection to engine
     @Override
@@ -33,18 +35,18 @@ public abstract class TilePipeWoodMixin extends TilePipeSided
 
     //save to tag
     @Override
-    public CompoundTag toTag(CompoundTag tag)
+    public NbtCompound writeNbt(NbtCompound tag)
     {
-        tag = super.toTag(tag);
+        tag = super.writeNbt(tag);
         EngineConnector.saveToTag(tag);
         return tag;
     }
 
     //load from tag
     @Override
-    public void fromTag(BlockState state, CompoundTag tag)
+    public void readNbt(NbtCompound tag)
     {
-        super.fromTag(state, tag);
+        super.readNbt(tag);
         EngineConnector.loadFromTag(tag);
     }
 
@@ -71,11 +73,11 @@ public abstract class TilePipeWoodMixin extends TilePipeSided
         //now need check all things
         if(EngineConnector.isCanExtract(world))
         {
-            tryExtract(dir);
+            tryExtract(dir, 1);
             return;
         }
     }
 
     //extract method, overridden in derived class
-    protected abstract void tryExtract(Direction dir);
+    protected abstract void tryExtract(Direction dir, int pulses);
 }
