@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "pipe_vacuum_pump:vacuum_pump_block_tier1",
+    "pipe_vacuum_pump:vacuum_pump_block_tier2",
+    "pipe_vacuum_pump:vacuum_pump_block_tier3"
+  ]
+}

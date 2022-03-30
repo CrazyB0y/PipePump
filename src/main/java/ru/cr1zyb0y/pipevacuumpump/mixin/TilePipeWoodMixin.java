@@ -35,11 +35,10 @@ public abstract class TilePipeWoodMixin extends TilePipeSided
 
     //save to tag
     @Override
-    public NbtCompound writeNbt(NbtCompound tag)
+    public void writeNbt(NbtCompound tag)
     {
-        tag = super.writeNbt(tag);
+        super.writeNbt(tag);
         EngineConnector.saveToTag(tag);
-        return tag;
     }
 
     //load from tag
