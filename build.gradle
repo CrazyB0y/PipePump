@@ -12,6 +12,7 @@ group = project.maven_group
 
 repositories {
 	mavenLocal()
+	maven { url "https://kneelawk.com/maven/" }
 	maven { name="BuildCraft"; url="https://mod-buildcraft.com/maven" }
 }
 
@@ -23,14 +24,17 @@ dependencies {
 	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
-	modImplementation 'RebornCore:RebornCore-1.18:+'
+	modImplementation 'RebornCore:RebornCore-1.19:+'
 	//include "RebornCore:RebornCore-1.15:+"
 
-	modImplementation 'TechReborn:TechReborn-1.18:+'
+	modImplementation 'TechReborn:TechReborn-1.19:+'
 	//include 'TechReborn:TechReborn-1.15:+'
 
-	modImplementation "alexiil.mc.mod:simplepipes-all:0.7.2"
+	//modImplementation "alexiil.mc.mod:simplepipes-all:0.7.2"
 	//include "alexiil.mc.mod:simplepipes-all:+"
+
+	modImplementation "alexiil.mc.mod:simplepipes-all:0.8.0-pre.1"
+	include "alexiil.mc.mod:simplepipes-all:0.8.0-pre.1"
 }
 
 processResources {
