@@ -10,7 +10,6 @@ import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
-import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -97,16 +96,16 @@ public class MachinePipePumpBlock extends BlockMachineBase
         super.appendTooltip(stack, worldIn, tooltip, flagIn);
         if(Screen.hasShiftDown())
         {
-            tooltip.add(new TranslatableText("pipe_vacuum_pump.tooltip.vacuum_pump_block").formatted(Formatting.GOLD));
+            tooltip.add(Text.translatable("pipe_vacuum_pump.tooltip.vacuum_pump_block").formatted(Formatting.GOLD));
         }
         else
         {
-            tooltip.add(new TranslatableText("pipe_vacuum_pump.tooltip.hold_shift").formatted(Formatting.BLUE));
+            tooltip.add(Text.translatable("pipe_vacuum_pump.tooltip.hold_shift").formatted(Formatting.BLUE));
         }
 
-        tooltip.add(new TranslatableText("pipe_vacuum_pump.tooltip.speed",
+        tooltip.add(Text.translatable("pipe_vacuum_pump.tooltip.speed",
                 Formatting.GOLD, "1", getEngineTickSpeed()).formatted(Formatting.GRAY));
-        tooltip.add(new TranslatableText("pipe_vacuum_pump.tooltip.consumption",
+        tooltip.add(Text.translatable("pipe_vacuum_pump.tooltip.consumption",
                 Formatting.GOLD, getEnergyCost()).formatted(Formatting.GRAY));
     }
     @Override
