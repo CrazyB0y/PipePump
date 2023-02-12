@@ -1,9 +1,8 @@
 package ru.cr1zyb0y.pipevacuumpump;
 
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
-import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
+import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
+import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.block.Block;
 import net.minecraft.block.entity.BlockEntityType;
@@ -12,8 +11,9 @@ import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
 import ru.cr1zyb0y.pipevacuumpump.blocks.MachinePipePumpBlock;
 import ru.cr1zyb0y.pipevacuumpump.blocksentity.MachinePipePumpBlockEntity;
 
@@ -39,7 +39,7 @@ public class RegistryManager
         PIPE_PUMP_BLOCK_TIER3 = new MachinePipePumpBlock(4, 10);
 
         //Create item group
-        PIPE_PUMP_GROUP = FabricItemGroupBuilder.create(
+        PIPE_PUMP_GROUP = FabricItemGroup.builder(
             new Identifier(PipeVacuumPumpMod.MOD_ID, "main"))
             .icon(() -> new ItemStack(PIPE_PUMP_BLOCK_TIER1))
             .build();
@@ -50,7 +50,7 @@ public class RegistryManager
         registerBlockWithItem("vacuum_pump_block_tier3", PIPE_PUMP_BLOCK_TIER3);
 
         //Reg entity
-        PIPE_PUMP_BLOCK_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, getName("vacuum_pump"),
+        PIPE_PUMP_BLOCK_ENTITY = Registry.register(Registries.BLOCK_ENTITY_TYPE, getName("vacuum_pump"),
                 FabricBlockEntityTypeBuilder.create(MachinePipePumpBlockEntity::new,
                         PIPE_PUMP_BLOCK_TIER1, PIPE_PUMP_BLOCK_TIER2, PIPE_PUMP_BLOCK_TIER3).build(null));
     }
@@ -68,8 +68,10 @@ public class RegistryManager
     private static void registerBlockWithItem(String name, Block block)
     {
         Identifier identity = getIdentifier(name);
-        Registry.register(Registry.BLOCK, identity, block);
-        Registry.register(Registry.ITEM, identity, new BlockItem(block, new Item.Settings().group(PIPE_PUMP_GROUP)));
+        Registry.register(Registries.BLOCK, identity, block);
+        Item BLOCK_ITEM = new BlockItem(block, new Item.Settings());
+        Registry.register(Registries.ITEM, identity, BLOCK_ITEM);
+        ItemGroupEvents.modifyEntriesEvent(PIPE_PUMP_GROUP).register((entries) -> entries.add(BLOCK_ITEM));
     }
 
     //Dumb way to get identifier
