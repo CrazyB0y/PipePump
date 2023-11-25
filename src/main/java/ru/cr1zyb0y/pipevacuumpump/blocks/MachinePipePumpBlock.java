@@ -33,6 +33,7 @@ import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.world.World;
 import reborncore.api.ToolManager;
 import reborncore.common.misc.ModSounds;
+import techreborn.init.TRBlockSettings;
 
 public class MachinePipePumpBlock extends BlockMachineBase
 {
@@ -42,6 +43,7 @@ public class MachinePipePumpBlock extends BlockMachineBase
 
     public MachinePipePumpBlock(int energyCost, int pumpSpeedTick)
     {
+        super(TRBlockSettings.machine());
         _energyCost = energyCost;
         _pumpSpeedTick = pumpSpeedTick;
         _blockShapes = VoxelShapeHelper.getRotatedHorizontalShapes(Direction.NORTH, getBaseShape());

@@ -24,11 +24,11 @@ dependencies {
 	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
-	modImplementation 'RebornCore:RebornCore-1.19:5.7.0'
-	modImplementation 'TechReborn:TechReborn-1.19:5.7.0'
+	modImplementation 'RebornCore:RebornCore-1.20:5.8.0'
+	modImplementation 'TechReborn:TechReborn-1.20:5.8.0'
 
-	modImplementation "alexiil.mc.mod:simplepipes-all:0.10.0"
-	modImplementation "alexiil.mc.mod:simplepipes-all:0.10.0"
+	modImplementation "alexiil.mc.mod:simplepipes-all:0.11.0-pre.2"
+	modImplementation "alexiil.mc.mod:simplepipes-all:0.11.0-pre.2"
 }
 
 processResources {

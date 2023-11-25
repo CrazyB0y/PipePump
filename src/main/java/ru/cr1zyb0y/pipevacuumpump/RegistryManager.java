@@ -13,6 +13,9 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
+import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import ru.cr1zyb0y.pipevacuumpump.blocks.MachinePipePumpBlock;
 import ru.cr1zyb0y.pipevacuumpump.blocksentity.MachinePipePumpBlockEntity;
@@ -30,6 +33,8 @@ public class RegistryManager
     //ItemGroup
     public static ItemGroup PIPE_PUMP_GROUP;
 
+    public static RegistryKey<ItemGroup> PIPE_PUMP_GROUP_KEY;
+
     //Init all things
     public static void Init()
     {
@@ -39,10 +44,16 @@ public class RegistryManager
         PIPE_PUMP_BLOCK_TIER3 = new MachinePipePumpBlock(4, 10);
 
         //Create item group
-        PIPE_PUMP_GROUP = FabricItemGroup.builder(
-            new Identifier(PipeVacuumPumpMod.MOD_ID, "main"))
+        PIPE_PUMP_GROUP = FabricItemGroup.builder()
+            .displayName(Text.translatable("itemGroup." + PipeVacuumPumpMod.MOD_ID + ".main"))
             .icon(() -> new ItemStack(PIPE_PUMP_BLOCK_TIER1))
             .build();
+
+        //Create item group key
+        PIPE_PUMP_GROUP_KEY = RegistryKey.of(RegistryKeys.ITEM_GROUP, getIdentifier("main"));
+
+        //Reg item group
+        Registry.register(Registries.ITEM_GROUP, PIPE_PUMP_GROUP_KEY, PIPE_PUMP_GROUP);
 
         //Reg blocks
         registerBlockWithItem("vacuum_pump_block_tier1", PIPE_PUMP_BLOCK_TIER1);
@@ -71,7 +82,8 @@ public class RegistryManager
         Registry.register(Registries.BLOCK, identity, block);
         Item BLOCK_ITEM = new BlockItem(block, new Item.Settings());
         Registry.register(Registries.ITEM, identity, BLOCK_ITEM);
-        ItemGroupEvents.modifyEntriesEvent(PIPE_PUMP_GROUP).register((entries) -> entries.add(BLOCK_ITEM));
+
+        ItemGroupEvents.modifyEntriesEvent(PIPE_PUMP_GROUP_KEY).register((entries) -> entries.add(BLOCK_ITEM));
     }
 
     //Dumb way to get identifier
