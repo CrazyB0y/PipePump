@@ -3,7 +3,8 @@
   "package": "ru.cr1zyb0y.pipevacuumpump.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-    "TilePipeWoodMixin"
+    "PartSpPipeMixin",
+    "PipeSpBehaviourWoodMixin"
   ],
   "client": [],
   "server": [],

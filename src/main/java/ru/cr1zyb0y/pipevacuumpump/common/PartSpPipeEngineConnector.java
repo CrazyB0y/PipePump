@@ -1,5 +1,6 @@
 package ru.cr1zyb0y.pipevacuumpump.common;
 
+import alexiil.mc.mod.pipes.pipe.PartSpPipe;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.nbt.NbtCompound;
@@ -9,14 +10,30 @@ import net.minecraft.world.World;
 
 import ru.cr1zyb0y.pipevacuumpump.blocks.MachinePipePumpBlock;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
-public class TilePipeEngineConnector
+public class PartSpPipeEngineConnector
 {
     private BlockPos _pipeEnginePos;
     private int _lastTick;
+
+    public static Map<PartSpPipe, PartSpPipeEngineConnector> tmpMap = new HashMap<>();
+
+    public static void add(PartSpPipe pipe, PartSpPipeEngineConnector connector) {
+        tmpMap.put(pipe, connector);
+    }
+
+    public static PartSpPipeEngineConnector get(PartSpPipe pipe) {
+        return tmpMap.get(pipe);
+    }
+
+    public static PartSpPipeEngineConnector remove(PartSpPipe pipe) {
+        return tmpMap.remove(pipe);
+    }
+
+    public static boolean contains(PartSpPipe pipe) {
+        return tmpMap.containsKey(pipe);
+    }
 
     //connect to engine
     public void findEngine(BlockPos pipePos, World world)
@@ -83,8 +100,8 @@ public class TilePipeEngineConnector
         return false;
     }
 
-    //save connector data to tag
-    public void saveToTag(NbtCompound tag)
+    //save connector data to nbt tag
+    public void saveToNbt(NbtCompound tag)
     {
         if(_pipeEnginePos != null)
         {
@@ -97,8 +114,8 @@ public class TilePipeEngineConnector
         }
     }
 
-    //load connector data from tag
-    public void loadFromTag(NbtCompound tag)
+    //load connector data from nbt tag
+    public void loadFromNbt(NbtCompound tag)
     {
         int[] blockPosArr = tag.getIntArray("engineConnector");
         if(blockPosArr != null && blockPosArr.length == 3)
