@@ -39,19 +39,19 @@ public abstract class PipeSpBehaviourWoodMixin extends PipeSpBehaviourSided {
         }
     }
 
-    //save to tag
-    @Override
-    public void fromNbt(NbtCompound tag) {
-        super.fromNbt(tag);
-        EngineConnector.saveToNbt(tag);
-    }
-
-    //load from tag
+    //save from tag
     @Override
     public NbtCompound toNbt() {
         NbtCompound nbt = super.toNbt();
-        EngineConnector.loadFromNbt(nbt);
+        EngineConnector.saveToNbt(nbt);
         return nbt;
+    }
+
+    //load to tag
+    @Override
+    public void fromNbt(NbtCompound nbt) {
+        super.fromNbt(nbt);
+        EngineConnector.loadFromNbt(nbt);
     }
 
     //main logic of extraction

@@ -17,8 +17,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import ru.cr1zyb0y.pipevacuumpump.common.PartSpPipeEngineConnector;
 
 @Mixin(PartSpPipe.class)
-public abstract class PartSpPipeMixin
-{
+public abstract class PartSpPipeMixin {
 
     @Shadow(remap = false) public abstract BlockPos getPipePos();
 
